@@ -38,7 +38,7 @@ export default function Footer() {
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-white-inverse font-bold text-sm">SL</span>
+              <span className="text-white-inverse font-bold text-sm">WE</span>
             </motion.div>
             <span className="text-white font-semibold text-lg">Webera</span>
           </motion.div>
@@ -79,7 +79,7 @@ export default function Footer() {
             className="text-gray-400 text-sm flex items-center gap-1"
             whileHover={{ color: "#addff1" }}
           >
-            Hazırlanmışdır ilə
+            
             <motion.span
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
