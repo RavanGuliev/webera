@@ -92,12 +92,11 @@ function ProjectCard({ project, index }) {
   return (
     <Wrapper
       ref={ref}
-      layout
       {...(project.url ? { href: project.url, target: "_blank", rel: "noopener noreferrer" } : {})}
-      initial={{ opacity: 0, y: 40, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.3 } }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      exit={{ opacity: 0, transition: { duration: 0.15 } }}
+      transition={{ duration: 0.35, delay: index * 0.03, ease: "easeOut" }}
       whileHover={{ y: -6 }}
       className="group bg-[#003152] rounded-2xl overflow-hidden border border-[#003152] hover:border-[#addff1]/20 transition-colors duration-500 shadow-[0_0_12px_rgba(173,223,241,0.12)] hover:shadow-[0_0_30px_rgba(173,223,241,0.3)]"
     >
@@ -220,13 +219,13 @@ export default function Projects() {
           ))}
         </div>
 
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence>
             {filtered.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
