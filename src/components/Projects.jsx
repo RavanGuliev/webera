@@ -1,7 +1,7 @@
-import { useState, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useInView } from "framer-motion"
-import { ExternalLink } from "lucide-react"
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
+import SectionHeader from "./SectionHeader"
 
 const projects = [
   {
@@ -9,7 +9,7 @@ const projects = [
     category: "E-ticarət Platformaları",
     description:
       "Dolphgame artıq tamamilə yeniləndi! Daha sürətli, daha müasir və tam istifadəçi dostu yeni interfeysimizlə xidmətinizdəyik. Sayta keçid edin, fərqi özünüz görün!",
-    image: "/projects/dolphnew.png",
+    image: "/projects/dolphnew.webp",
     tags: ["Nuxt.js", "Laravel", "E-ticarət"],
     url: "https://dolphgame.vercel.app/",
   },
@@ -18,9 +18,8 @@ const projects = [
     category: "E-ticarət Platformaları",
     description:
       "Goaf.az artıq tamamilə yeniləndi! Tam modern dizayn, maksimum sürət və yenilənmiş interfeyslə xidmətinizdəyik. Sayta keçid edin və yeni təcrübəni özünüz sınaqdan keçirin!",
-    image: "/projects/goaf.png",
-     tags: ["Nuxt.js", "Laravel", "E-ticarət"],
-
+    image: "/projects/goaf.webp",
+    tags: ["Nuxt.js", "Laravel", "E-ticarət"],
     url: "https://goafaz.com/",
   },
   {
@@ -28,8 +27,8 @@ const projects = [
     category: "Korporativ Saytlar",
     description:
       "Monaarte.az-da estetik yenilik! Yaradıcılığımızı və memarlıq baxışımızı indi daha modern, vizual olaraq mükəmməl və tamamilə yenilənmiş interfeysimizlə sizə təqdim edirik. Saytımıza keçid edin, xəyallarınızdakı məkanların rəqəmsal vizualına şahid olun!",
-    image: "/projects/monaarte1.png",
-tags: ["Laravel", "MVC", "Custom Development", "Architecture & Design", "Responsive Web"],
+    image: "/projects/monaarte1.webp",
+    tags: ["Laravel", "MVC", "Custom Development", "Architecture & Design", "Responsive Web"],
     url: "https://monaarte.az/",
   },
   {
@@ -37,129 +36,131 @@ tags: ["Laravel", "MVC", "Custom Development", "Architecture & Design", "Respons
     category: "QR Menü & Avtomatlaşdırma",
     description:
       "Caffecino üçün xüsusi olaraq hazırladığımız QR menyu sistemini tamamilə sıfırdan kodlaşdırdıq. Hazır şablonlar və ya ləng işləyən platformalar yoxdur! Müştərilərin menyunu rahatlıqla incələməsi, sürətli və kəsintisiz bir istifadəçi təcrübəsi (UI/UX) yaşaması üçün hər bir detalı xüsusi olaraq işlənib. Kafe və restoran menecmentində rəqəmsal sürət!",
-    image: "/projects/caffecinoa.png",
+    image: "/projects/caffecinoa.webp",
     tags: ["QR", "Restoran", "Rəqəmsal"],
     url: "https://caffecino.az/",
   },
-  
   {
     title: "Dark Mocha Template",
     category: "QR Menü & Avtomatlaşdırma",
-    description: "Kafe və coffee shop-lar üçün premium tünd tonlarda hazırlanmış rəqəmsal menyu şablonu. Heç bir hazır freymvork asılılığı olmadan, tamamilə sıfırdan kodlaşdırılıb. Müştərilərin menyunu rahatlıqla incələməsi, sürətli və kəsintisiz bir istifadəçi təcrübəsi (UI/UX) yaşaması üçün hər bir animasiya və keçid xüsusi olaraq optimizasiya edilib.",
-    image: "/projects/temp44.png",
+    description:
+      "Kafe və coffee shop-lar üçün premium tünd tonlarda hazırlanmış rəqəmsal menyu şablonu. Heç bir hazır freymvork asılılığı olmadan, tamamilə sıfırdan kodlaşdırılıb. Müştərilərin menyunu rahatlıqla incələməsi, sürətli və kəsintisiz bir istifadəçi təcrübəsi (UI/UX) yaşaması üçün hər bir animasiya və keçid xüsusi olaraq optimizasiya edilib.",
+    image: "/projects/temp44.webp",
     tags: ["Minimalist", "Dark Mode", "QR Menu"],
-    url: "https://template4-1xgp.vercel.app/" 
+    url: "https://template4-1xgp.vercel.app/",
   },
-
   {
     title: "Minimal Light Template",
     category: "QR Menü & Avtomatlaşdırma",
-    description: "Geniş vizual sahələri və təmiz tipofrafiyası ilə ön plana çıxan minimalist kafe və restoran şablonu. Brendin korporativ kimliyini və təamlarını ən estetik şəkildə təqdim etmək üçün dizayn edilib. Mobil-fokuslu arxitekturası sayəsində bütün cihazlarda donma olmadan, anında reaksiyası verən UI/UX quruluşu.",
-    image: "/projects/temp11.png",
+    description:
+      "Geniş vizual sahələri və təmiz tipofrafiyası ilə ön plana çıxan minimalist kafe və restoran şablonu. Brendin korporativ kimliyini və təamlarını ən estetik şəkildə təqdim etmək üçün dizayn edilib. Mobil-fokuslu arxitekturası sayəsində bütün cihazlarda donma olmadan, anında reaksiyası verən UI/UX quruluşu.",
+    image: "/projects/temp11.webp",
     tags: ["Clean", "Light Mode", "Corporate"],
-    url: "https://template5-eta.vercel.app/"
+    url: "https://template5-eta.vercel.app/",
   },
-
   {
     title: "Dynamic Grid Template",
     category: "QR Menü & Avtomatlaşdırma",
-    description: "Canlı rənglər və dinamik grid (tor) strukturu ilə yığılmış müasir şəhər kafesi şablonu. İstifadəçilərin kateqoriyalar arasında sürətlə keçid edə bilməsi və vizual olaraq doyması üçün front-end tərəfi xüsusi kodlaşdırılıb. Kafe menecmentində vizual sürəti və interaktivliyi maksimuma çatdıran rəqəmsal həll.",
-    image: "/projects/temp33.png",
+    description:
+      "Canlı rənglər və dinamik grid (tor) strukturu ilə yığılmış müasir şəhər kafesi şablonu. İstifadəçilərin kateqoriyalar arasında sürətlə keçid edə bilməsi və vizual olaraq doyması üçün front-end tərəfi xüsusi kodlaşdırılıb. Kafe menecmentində vizual sürəti və interaktivliyi maksimuma çatdıran rəqəmsal həll.",
+    image: "/projects/temp33.webp",
     tags: ["Dynamic", "Grid", "Interactive"],
-    url: "https://template3-opal-nine.vercel.app/"
+    url: "https://template3-opal-nine.vercel.app/",
   },
-
   {
     title: "Elegant Premium Template",
     category: "QR Menü & Avtomatlaşdırma",
-    description: "Premium kafe-restoranlar və lounge-lar üçün zəriflik və lüksü ön plana çıxaran xüsusi şablon. Heç bir ləng işləyən platformaya əsaslanmır; sıfırdan yığılan sürətli keçidləri ilə həm masa arxasında QR menyu kimi, həm də rəsmi korporativ veb sayt kimi istifadəyə tam uyğundur.",
-    image: "/projects/temp22.png",
+    description:
+      "Premium kafe-restoranlar və lounge-lar üçün zəriflik və lüksü ön plana çıxaran xüsusi şablon. Heç bir ləng işləyən platformaya əsaslanmır; sıfırdan yığılan sürətli keçidləri ilə həm masa arxasında QR menyu kimi, həm də rəsmi korporativ veb sayt kimi istifadəyə tam uyğundur.",
+    image: "/projects/temp22.webp",
     tags: ["Elegant", "Premium", "UX/UI"],
-    url: "https://template4-1xgp.vercel.app/"
-  }
+    url: "https://template4-1xgp.vercel.app/",
+  },
 ]
 
+const categories = ["Hamısı", ...new Set(projects.map((p) => p.category))]
 
+const getDomain = (url) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "")
+  } catch {
+    return ""
+  }
+}
 
-const categories = ["Hamısı", "Korporativ Saytlar", "E-ticarət Platformaları", "QR Menü & Avtomatlaşdırma", "İnteqrasiya & Mail Sistemləri"]
-
-function ProjectCard({ project, index }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  const Wrapper = project.url ? motion.a : motion.div
+function ProjectCard({ project, index, featured }) {
+  const Wrapper = project.url ? "a" : "div"
+  const wrapperProps = project.url
+    ? { href: project.url, target: "_blank", rel: "noopener noreferrer" }
+    : {}
 
   return (
     <Wrapper
-      ref={ref}
-      {...(project.url ? { href: project.url, target: "_blank", rel: "noopener noreferrer" } : {})}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      exit={{ opacity: 0, transition: { duration: 0.15 } }}
-      transition={{ duration: 0.35, delay: index * 0.03, ease: "easeOut" }}
-      whileHover={{ y: -6 }}
-      className="group bg-[#003152] rounded-2xl overflow-hidden border border-[#003152] hover:border-[#addff1]/20 transition-colors duration-500 shadow-[0_0_12px_rgba(173,223,241,0.12)] hover:shadow-[0_0_30px_rgba(173,223,241,0.3)]"
+      {...wrapperProps}
+      className={`group relative flex flex-col rounded-2xl overflow-hidden border border-[#addff1]/10 bg-gradient-to-b from-[#00395e] to-[#002641] transition-all duration-300 hover:border-[#addff1]/40 hover:shadow-[0_20px_50px_-20px_rgba(173,223,241,0.35)] hover:-translate-y-1 ${
+        featured ? "md:col-span-2" : ""
+      }`}
     >
-      <div className="relative overflow-hidden h-64">
-        <motion.img
+      {/* Brauzer pəncərəsi başlığı */}
+      <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-[#addff1]/10 bg-[#002641]/70">
+        <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/80" />
+        <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]/80" />
+        <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]/80" />
+        <span className="ml-3 flex-1 truncate text-center text-[11px] tracking-wide text-gray-400 bg-[#003152] rounded-md px-3 py-1">
+          {getDomain(project.url)}
+        </span>
+        <ArrowUpRight
+          size={15}
+          className="ml-2 shrink-0 text-gray-500 transition-all duration-300 group-hover:text-[#addff1] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </div>
+
+      {/* Screenshot */}
+      <div className={`relative overflow-hidden ${featured ? "h-64 md:h-80" : "h-56"}`}>
+        <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.6 }}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-[#003152] via-transparent to-transparent"
-          initial={{ opacity: 0.6 }}
-          whileHover={{ opacity: 0.3 }}
-        />
-        <motion.div
-          className="absolute top-4 left-4"
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <motion.span
-            className="bg-[#addff1] text-[#003152] text-xs font-bold px-3 py-1 rounded-full inline-block"
-            whileHover={{ scale: 1.1 }}
-          >
-            {project.category}
-          </motion.span>
-        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#002641] via-transparent to-transparent opacity-60" />
+        <span className="absolute top-3 left-3 bg-[#003152]/80 backdrop-blur-sm border border-[#addff1]/20 text-[#addff1] text-[11px] font-semibold px-3 py-1 rounded-full">
+          {project.category}
+        </span>
+        <span className="absolute inset-x-0 bottom-4 mx-auto w-max opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-[#addff1] text-[#003152] text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+          Sayta keç ↗
+        </span>
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[#addff1] transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+
+      {/* Məzmun */}
+      <div className="flex flex-col flex-1 p-6">
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="font-display text-lg font-semibold text-white transition-colors duration-300 group-hover:text-[#addff1]">
+            {project.title}
+          </h3>
+          <span className="font-mono text-xs text-[#addff1]/40 pt-1">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+        <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-5">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag, i) => (
-            <motion.span
+        <div className="mt-auto flex flex-wrap gap-2">
+          {project.tags.slice(0, 3).map((tag) => (
+            <span
               key={tag}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 + i * 0.05 }}
-              className="text-xs text-gray-400 bg-[#003152] px-3 py-1 rounded-full"
+              className="text-[11px] text-gray-300 bg-[#addff1]/5 border border-[#addff1]/10 px-3 py-1 rounded-full"
             >
               {tag}
-            </motion.span>
+            </span>
           ))}
+          {project.tags.length > 3 && (
+            <span className="text-[11px] text-[#addff1]/60 px-2 py-1">
+              +{project.tags.length - 3}
+            </span>
+          )}
         </div>
-        <motion.a
-          href="#"
-          className="inline-flex items-center gap-2 text-[#addff1] text-sm font-semibold"
-          whileHover={{ gap: "0.75rem" }}
-        >
-          Ətraflı
-          <motion.span
-            animate={{ x: [0, 3, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ExternalLink size={14} />
-          </motion.span>
-        </motion.a>
       </div>
     </Wrapper>
   )
@@ -167,8 +168,6 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("Hamısı")
-  const headerRef = useRef(null)
-  const isInView = useInView(headerRef, { once: true })
 
   const filtered =
     activeCategory === "Hamısı"
@@ -176,56 +175,63 @@ export default function Projects() {
       : projects.filter((p) => p.category === activeCategory)
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-16">
+    <section id="projects" className="py-28 relative">
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#addff1]/5 blur-[100px] opacity-40 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+        <SectionHeader
+          label="Layihələrimiz"
+          title="Son işlərimiz"
+          description="Fərqli sahələr üçün hazırladığımız layihələrlə tanış olun."
+        />
+
+        <div className="flex flex-wrap gap-2 mb-12">
+          {categories.map((cat) => {
+            const count =
+              cat === "Hamısı"
+                ? projects.length
+                : projects.filter((p) => p.category === cat).length
+            const active = activeCategory === cat
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`relative px-5 py-2 rounded-full text-sm font-medium border transition-colors duration-200 active:scale-95 ${
+                  active
+                    ? "text-[#003152] border-transparent"
+                    : "text-gray-400 border-[#addff1]/10 bg-[#addff1]/5 hover:text-white hover:border-[#addff1]/30"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="activeCategoryPill"
+                    className="absolute inset-0 bg-[#addff1] rounded-full"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
+                <span className="relative z-10">
+                  {cat} <span className="opacity-60 text-xs">({count})</span>
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
         <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          key={activeCategory}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.1 }}
-            className="text-[#addff1] font-semibold text-sm tracking-widest uppercase"
-          >
-            Layihələrimiz
-          </motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-4 mb-6 transition-colors">
-            Son işlərimiz
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Fərqli sahələr üçün hazırladığımız layihələrlə tanış olun.
-          </p>
-        </motion.div>
-
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat) => (
-            <motion.button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-[#addff1] text-[#003152] shadow-lg"
-                  : "bg-[#003152] text-gray-400 hover:bg-[#003152] hover:text-white"
-              }`}
-            >
-              {cat}
-            </motion.button>
+          {filtered.map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={index}
+              featured={index === 0}
+            />
           ))}
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {filtered.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
-            ))}
-          </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

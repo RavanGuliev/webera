@@ -184,8 +184,12 @@ const Particles = ({
     let lastTime = performance.now();
     let elapsed = 0;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const update = t => {
-      animationFrameId = requestAnimationFrame(update);
+      if (!prefersReducedMotion) {
+        animationFrameId = requestAnimationFrame(update);
+      }
       const delta = t - lastTime;
       lastTime = t;
       elapsed += delta * speed;

@@ -1,14 +1,7 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import {
-  Globe,
-  Smartphone,
-  Server,
-  Palette,
-  Package,
-  Share2,
-  Calculator,
-} from "lucide-react"
+import { Globe, Smartphone, Server, Package } from "lucide-react"
+import SectionHeader from "./SectionHeader"
 
 const services = [
   {
@@ -16,184 +9,90 @@ const services = [
     title: "Veb Saytların Hazırlanması",
     description:
       "Biznesiniz üçün sürətli, SEO-dostu və responsiv veb saytlar qururuq: korporativ sayt, landing page, e-commerce və xüsusi həllər.",
-    color: "blue",
   },
   {
     icon: Smartphone,
     title: "Mobil Tətbiq İnkişafı",
     description:
       "iOS və Android üçün performanslı, miqyaslana bilən mobil tətbiqlər: native və ya cross-platform yanaşma ilə.",
-    color: "violet",
   },
   {
     icon: Server,
     title: "Texniki Dəstək və Hosting",
     description:
       "24/7 monitorinq, server idarəetməsi, təhlükəsizlik, backup və SLA əsaslı operativ yardım — sistemləriniz daima işlək qalsın.",
-    color: "pink",
   },
-
   {
     icon: Package,
     title: "Hazır Paketlər",
     description:
       "Sürətli start üçün hazır paketlər: korporativ sayt şablonları, rezervasiya sistemləri, email marketinq həlləri, CRM inteqrasiyası.",
-    color: "indigo",
   },
-
-
 ]
-
-const colorMap = {
-  blue: {
-    text: "text-blue-400",
-    border: "border-blue-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]",
-    iconBg: "bg-blue-500/10",
-    hoverBorder: "hover:border-blue-500/50",
-  },
-  violet: {
-    text: "text-violet-400",
-    border: "border-violet-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(139,92,246,0.15)]",
-    iconBg: "bg-violet-500/10",
-    hoverBorder: "hover:border-violet-500/50",
-  },
-  pink: {
-    text: "text-pink-400",
-    border: "border-pink-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(236,72,153,0.15)]",
-    iconBg: "bg-pink-500/10",
-    hoverBorder: "hover:border-pink-500/50",
-  },
-  cyan: {
-    text: "text-cyan-400",
-    border: "border-cyan-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]",
-    iconBg: "bg-cyan-500/10",
-    hoverBorder: "hover:border-cyan-500/50",
-  },
-  indigo: {
-    text: "text-indigo-400",
-    border: "border-indigo-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(99,102,241,0.15)]",
-    iconBg: "bg-indigo-500/10",
-    hoverBorder: "hover:border-indigo-500/50",
-  },
-  red: {
-    text: "text-red-400",
-    border: "border-red-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(239,68,68,0.15)]",
-    iconBg: "bg-red-500/10",
-    hoverBorder: "hover:border-red-500/50",
-  },
-  orange: {
-    text: "text-orange-400",
-    border: "border-orange-500/30",
-    shadow: "hover:shadow-[0_0_20px_rgba(249,115,22,0.15)]",
-    iconBg: "bg-orange-500/10",
-    hoverBorder: "hover:border-orange-500/50",
-  },
-}
 
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.08 },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: { duration: 0.5, ease: "easeOut" },
   },
 }
 
 function ServiceCard({ service, index }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
-  const colors = colorMap[service.color]
-
   return (
     <motion.div
-      ref={ref}
       variants={cardVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      className={`group bg-[#003152] rounded-2xl p-6 border ${colors.border} ${colors.shadow} ${colors.hoverBorder} transition-all duration-300`}
-      whileHover={{ y: -8, scale: 1.02 }}
+      className="group relative rounded-2xl p-7 bg-gradient-to-b from-[#00395e]/60 to-[#002641]/60 border border-white/5 hover:border-[#addff1]/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_-20px_rgba(173,223,241,0.25)] overflow-hidden"
     >
-      <motion.div
-        className={`w-14 h-14 rounded-xl ${colors.iconBg} flex items-center justify-center mb-5`}
-        whileHover={{ rotate: 360 }}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-        >
-          <service.icon className={colors.text} size={28} />
-        </motion.div>
-      </motion.div>
-      <h3 className="text-xl font-semibold text-white mb-3 transition-colors">{service.title}</h3>
+      {/* Hover-da üstdə görünən incə işıq xətti */}
+      <div className="absolute top-0 inset-x-6 h-px bg-gradient-to-r from-transparent via-[#addff1]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <span className="absolute top-6 right-6 font-mono text-xs text-[#addff1]/25 group-hover:text-[#addff1]/60 transition-colors">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      <div className="w-14 h-14 rounded-2xl bg-[#addff1]/10 border border-[#addff1]/15 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-[#addff1] group-hover:shadow-[0_0_25px_rgba(173,223,241,0.4)]">
+        <service.icon
+          size={26}
+          className="text-[#addff1] transition-colors duration-300 group-hover:text-[#003152]"
+        />
+      </div>
+
+      <h3 className="font-display text-lg font-semibold text-white mb-3 transition-colors duration-300 group-hover:text-[#addff1]">
+        {service.title}
+      </h3>
       <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
     </motion.div>
   )
 }
 
 export default function Services() {
-  const headerRef = useRef(null)
-  const isHeaderInView = useInView(headerRef, { once: true })
   const gridRef = useRef(null)
   const isGridInView = useInView(gridRef, { once: true, margin: "-100px" })
 
   return (
-    <section id="services" className="py-24 relative">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-16">
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isHeaderInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.1 }}
-            className="text-[#addff1] font-semibold text-sm tracking-widest uppercase"
-          >
-            Xidmətlərimiz
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-4 mb-6 transition-colors"
-          >
-            Biz nə təklif edirik
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isHeaderInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.3 }}
-            className="text-gray-400 max-w-2xl mx-auto"
-          >
-            Müasir texnologiyalar və qabaqcıl metodlarla təmin etdiyimiz xidmətlərimiz
-            hər zaman yüksək keyfiyyətə sahibdir.
-          </motion.p>
-        </motion.div>
+    <section id="services" className="py-28 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+        <SectionHeader
+          label="Xidmətlərimiz"
+          title="Biz nə təklif edirik"
+          description="Müasir texnologiyalar və qabaqcıl metodlarla təmin etdiyimiz xidmətlərimiz hər zaman yüksək keyfiyyətə sahibdir."
+        />
 
         <motion.div
           ref={gridRef}
           variants={containerVariants}
           initial="hidden"
           animate={isGridInView ? "visible" : "hidden"}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
           {services.map((service, index) => (
             <ServiceCard key={service.title} service={service} index={index} />

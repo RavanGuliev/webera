@@ -36,3 +36,68 @@ html {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+.font-display {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* İncə nöqtəli tor naxışı — premium fon teksturu */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(173, 223, 241, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Nəhəng kontur yazı (footer watermark) */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(173, 223, 241, 0.1);
+}
+
+/* Texnologiya lenti */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* GPU-da işləyən yüngül animasiyalar (JS əvəzinə CSS) */
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+.dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.icon-pulse {
+  animation: icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.float-y {
+  animation: float-y 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot-pulse,
+  .icon-pulse,
+  .float-y,
+  .marquee-track {
+    animation: none;
+  }
+}

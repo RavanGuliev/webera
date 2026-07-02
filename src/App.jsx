@@ -1,10 +1,11 @@
 import { useState, useEffect, lazy, Suspense } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion"
 import Navbar from "./components/Navbar"
 
 const Particles = lazy(() => import("./components/Particles"))
 
 import Hero from "./components/Hero"
+import TechMarquee from "./components/TechMarquee"
 import Services from "./components/Services"
 import About from "./components/About"
 import Projects from "./components/Projects"
@@ -13,23 +14,13 @@ import Footer from "./components/Footer"
 import { ChevronUp } from "lucide-react"
 
 function ScrollProgress() {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const onScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0)
-    }
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 40, restDelta: 0.001 })
 
   return (
     <motion.div
-      className="fixed top-0 left-0 h-[3px] bg-[#addff1] z-[100]"
-      style={{ width: `${progress}%` }}
-      initial={{ width: "0%" }}
+      className="fixed top-0 left-0 right-0 h-[3px] bg-[#addff1] z-[100] origin-left"
+      style={{ scaleX }}
     />
   )
 }
@@ -84,6 +75,7 @@ export default function App() {
       <Navbar />
       <main className="relative z-10">
         <section id="home"><Hero /></section>
+        <TechMarquee />
         <Services />
         <About />
         <Projects />
