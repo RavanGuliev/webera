@@ -81,11 +81,11 @@ export default function Footer() {
           </nav>
 
           <a
-            href="mailto:info@webera.az"
+            href="mailto:info@webera.com.tr"
             className="flex items-center gap-2 text-gray-400 hover:text-[#addff1] transition-colors text-sm"
           >
             <Mail size={15} />
-            info@webera.az
+            info@webera.com.tr
           </a>
         </motion.div>
 
@@ -97,7 +97,7 @@ export default function Footer() {
         >
           <p className="text-gray-500 text-sm">© 2026 Webera. Bütün hüquqlar qorunur.</p>
           <p className="text-gray-500 text-sm flex items-center gap-1.5">
-            Bakıda
+            Sevgi
             <span className="dot-pulse inline-flex" style={{ animationDuration: "1.5s" }}>
               <Heart size={13} className="text-red-500 fill-red-500" />
             </span>

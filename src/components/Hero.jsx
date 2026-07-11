@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { ArrowRight, ArrowUpRight, ChevronDown, Sparkles } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react"
 
 const containerVariants = {
   hidden: {},
@@ -197,16 +197,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* Aşağı sürüşdürmə göstəricisi */}
-      <a
-        href="#services"
-        aria-label="Aşağı sürüşdür"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-gray-500 hover:text-[#addff1] transition-colors"
-      >
-        <span className="text-[10px] tracking-[0.25em] uppercase">Kəşf et</span>
-        <ChevronDown size={18} className="float-y" style={{ animationDuration: "2s" }} />
-      </a>
     </section>
   )
 }

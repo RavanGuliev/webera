@@ -47,7 +47,7 @@ const projects = [
       "Kafe və coffee shop-lar üçün premium tünd tonlarda hazırlanmış rəqəmsal menyu şablonu. Heç bir hazır freymvork asılılığı olmadan, tamamilə sıfırdan kodlaşdırılıb. Müştərilərin menyunu rahatlıqla incələməsi, sürətli və kəsintisiz bir istifadəçi təcrübəsi (UI/UX) yaşaması üçün hər bir animasiya və keçid xüsusi olaraq optimizasiya edilib.",
     image: "/projects/temp44.webp",
     tags: ["Minimalist", "Dark Mode", "QR Menu"],
-    url: "https://template4-1xgp.vercel.app/",
+    url: "https://template2-sigma-seven.vercel.app/",
   },
   {
     title: "Minimal Light Template",
@@ -75,6 +75,15 @@ const projects = [
     image: "/projects/temp22.webp",
     tags: ["Elegant", "Premium", "UX/UI"],
     url: "https://template4-1xgp.vercel.app/",
+  },
+  {
+    title: "Midnight Gold Template",
+    category: "QR Menü & Avtomatlaşdırma",
+    description:
+      "Fine-dining restoran və lounge məkanları üçün tünd tonlar və qızılı vurğularla hazırlanmış premium QR menyu konsepti. Interyerin zəngin estetikasını rəqəmsal menyuya daşıyan bu şablon, hər detalın lüks hiss olunması üçün sıfırdan dizayn edilib.",
+    image: "/projects/temp6.png",
+    tags: ["Fine Dining", "Dark Luxury", "QR Menu"],
+    url: "https://yourbrand6.vercel.app/",
   },
 ]
 

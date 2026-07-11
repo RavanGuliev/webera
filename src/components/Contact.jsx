@@ -30,8 +30,8 @@ const inputClass =
   "w-full bg-[#00243b] text-white px-5 py-3.5 rounded-xl border border-white/10 focus:border-[#addff1]/60 focus:ring-2 focus:ring-[#addff1]/10 focus:outline-none transition-all duration-300 placeholder:text-gray-600 text-sm"
 
 const contactInfo = [
-  { icon: Mail, title: "Email", value: "info@webera.az", href: "mailto:info@webera.az" },
-  { icon: Phone, title: "Telefon", value: "+994 50 123 45 67", href: "tel:+994501234567" },
+  { icon: Mail, title: "Email", value: "info@webera.com.tr", href: "mailto:info@webera.com.tr" },
+  { icon: Phone, title: "Telefon", value: "+994 55 503 21 05", href: "tel:+994555032105" },
   { icon: MapPin, title: "Ünvan", value: "Bakı, Azərbaycan" },
 ]
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ArrowUpRight } from "lucide-react"
 
@@ -9,14 +9,23 @@ const navLinks = [
   { name: "Əlaqə", href: "#contact" },
 ]
 
+const mobileNavLinks = [
+  { name: "Xidmətlər", href: "#services" },
+  { name: "Layihələr", href: "#projects" },
+  { name: "Haqqımızda", href: "#about" },
+  { name: "Əlaqə", href: "#contact" },
+]
+
 function Logo() {
   return (
-    <a href="#home" className="flex items-center gap-2.5 cursor-pointer group">
-      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#addff1] to-[#5fb3d4] flex items-center justify-center shadow-[0_0_20px_rgba(173,223,241,0.35)] transition-transform duration-300 group-hover:rotate-6">
-        <span className="text-[#003152] font-display font-bold text-base">W</span>
-      </div>
-      <span className="font-display text-white font-semibold text-lg tracking-tight">
-        Webera<span className="text-[#addff1]"></span>
+    <a href="#home" className="flex items-center cursor-pointer group">
+      <img
+        src="/weberamain12-trim.png"
+        alt="Webera"
+        className="h-12 w-auto object-contain transition-transform duration-300 group-hover:rotate-6"
+      />
+      <span className="font-display text-white font-semibold text-2xl tracking-tight leading-none translate-y-1.5 -ml-3">
+        ebera
       </span>
     </a>
   )
@@ -24,9 +33,39 @@ function Logo() {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const handleOutsideClick = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setMenuOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick)
+    document.addEventListener("touchstart", handleOutsideClick)
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick)
+      document.removeEventListener("touchstart", handleOutsideClick)
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const handleScroll = () => setMenuOpen(false)
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [menuOpen])
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex items-start justify-center p-4 sm:p-6 pointer-events-none">
+    <div
+      ref={containerRef}
+      className="fixed top-0 left-0 w-full z-50 flex items-start justify-center p-4 sm:p-6 pointer-events-none"
+    >
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -48,7 +87,7 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="group ml-3 bg-[#addff1] text-[#003152] text-sm font-bold pl-5 pr-4 py-2.5 rounded-xl hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(173,223,241,0.25)] flex items-center gap-1.5 active:scale-95"
+            className="group ml-3 bg-[#addff1] text-[#003152] text-sm font-bold pl-5 pr-4 py-2 rounded-xl hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(173,223,241,0.25)] flex items-center gap-1.5 active:scale-95"
           >
             Layihəyə başla
             <ArrowUpRight
@@ -77,7 +116,7 @@ export default function Navbar() {
             className="absolute top-20 left-4 right-4 max-w-6xl mx-auto bg-[#00253d]/95 backdrop-blur-2xl rounded-2xl p-4 pointer-events-auto shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-[#addff1]/10 md:hidden"
           >
             <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
+              {mobileNavLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}

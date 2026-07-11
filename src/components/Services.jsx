@@ -50,7 +50,7 @@ function ServiceCard({ service, index }) {
   return (
     <motion.div
       variants={cardVariants}
-      className="group relative rounded-2xl p-7 bg-gradient-to-b from-[#00395e]/60 to-[#002641]/60 border border-white/5 hover:border-[#addff1]/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_-20px_rgba(173,223,241,0.25)] overflow-hidden"
+      className="group relative h-full flex flex-col rounded-2xl p-7 bg-gradient-to-b from-[#00395e]/60 to-[#002641]/60 border border-white/5 hover:border-[#addff1]/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_-20px_rgba(173,223,241,0.25)] overflow-hidden"
     >
       {/* Hover-da üstdə görünən incə işıq xətti */}
       <div className="absolute top-0 inset-x-6 h-px bg-gradient-to-r from-transparent via-[#addff1]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
